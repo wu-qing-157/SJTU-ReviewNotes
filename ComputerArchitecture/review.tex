@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{xeCJK, geometry}
+\usepackage{amsmath, amssymb}
+
+\setCJKmainfont{微软雅黑}
+\geometry{a4paper, scale=0.8}
+
+\def\l{\left}
+\def\r{\right}
+
+\title{Review Notes for Computer Architecture}
+\author{Yi Gu}
+
+\begin{document}
+    \maketitle
+    \begin{itemize}
+        \item $\mathrm{CPI} = \dfrac{\mathrm{CPU~Time} \times \mathrm{Clock~Rate}}{{\mathrm{Instrution~Count}}} = \dfrac{\mathrm{Cycles}}{\mathrm{Instrution~Count}}$
+        \item $\mathrm{CPI} = \mathrm{Cycle~Time} \times \sum\limits_{j = 1}^n \mathrm{CPI}_j \times I_j$
+        \item $\mathrm{CPI} = \sum\limits_{j = 1}^n \mathrm{CPI}_j \times F_j$, where $F_j = \dfrac{I_j}{\mathrm{Instrution~Count}}$
+        \item $\mathrm{CPI}_\mathrm{Pipelined} = \mathrm{Ideal~CPI} + \mathrm{Average~Stall~cycles~per~Inst}$
+        \item $\mathrm{Speedup} = \dfrac{\mathrm{Ideal~CPI} \times \mathrm{Pipeline~depth}}{\mathrm{Ideal~CPI} + \mathrm{Pipeline~stall~CPI}} \times \dfrac{\mathrm{Cycle~Time}_\mathrm{unpipelined}}{\mathrm{Cycle~Time}_\mathrm{pipelined}}$
+        \item If ideal CPI is $1$, then $\mathrm{Speedup} = \dfrac{\mathrm{Pipeline~depth}}{1 + \mathrm{Pipeline~stall~CPI}} \times \dfrac{\mathrm{Cycle~Time}_\mathrm{unpipelined}}{\mathrm{Cycle~Time}_\mathrm{pipelined}}$
+        \item Temporal Locality (time), Spatial Locality (space)
+        \item Compulsory Misses (cold start), Capacity Misses, Conflict Misses
+        \item Write Through, Write back
+        \item synonym/alias (two va, same pa)
+        \item $\mathrm{CPU~time} = \mathrm{IC} \times \l( \mathrm{CPI}_\mathrm{Execution} + \dfrac{\mathrm{Mem~Access}}{\mathrm{Inst}} \times \mathrm{Miss~Rate} \times \mathrm{Miss~Penalty} \r) \mathrm{Cycle~Time}$
+        \item $\mathrm{CPU~time} = \mathrm{IC} \times \l( \dfrac{\mathrm{AluOps}}{\mathrm{Inst}} \times \mathrm{CPI}_\mathrm{AluOps} + \dfrac{\mathrm{Mem~Access}}{\mathrm{Inst}} \times \mathrm{AMAT} \r) \times \mathrm{Cycle~Time}$
+        \item $\mathrm{AMAT} = \mathrm{Hit~Time} + \mathrm{Miss~Rate} \times \mathrm{Miss~Penalty}$
+        \item Reduce Miss Rate: larger block size, higher associativity, victim cache, pseudo-associativity, hardware prefetching, softerware prefetching, compiler optimizations
+        \item Reduce Miss Penalty: read priority over write, early restart and critical word first, non-blocking cache, second-level cache
+        \item Reduce Hit Time: small and simple cache, avoid address translation, pipeline cache
+        \item Structural hazard, Data hazard (RAW, WAR, WAW), Control hazard
+        \item HW (Tomasulo) vs. SW (VLIW) Speculation -> P115
+    \end{itemize}
+\end{document}
