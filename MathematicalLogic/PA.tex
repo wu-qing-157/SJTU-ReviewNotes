@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\usepackage{euler, geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumerate}
+
+\geometry{a4paper, scale=0.9}
+
+\title{Notes for Peano Arithmetic}
+\author{Yi Gu}
+
+\def\l{\left}
+\def\r{\right}
+\def\o{\overline}
+
+\begin{document}
+    \maketitle
+    \begin{enumerate}[(i)]
+        \item $x + 0 \equiv 0 + x$
+        $$\l(m + 1\r) + 0 \equiv m + \l(0 + 1\r) \equiv \l(m + 0\r) + 1 \equiv \l(0 + m\r) + 1 \equiv 0 + \l(m + 1\r)$$
+
+        \item $x + \l( y + 1 \r) \equiv \l( x + 1 \r) + y$
+        $$x + \l(0 + 1\r) \equiv \l(x + 0 \r) + 1 \equiv x + 1 \equiv \l(x + 1\r) + 0$$
+        $$x + \l(\l( m + 1 \r) + 1 \r) \equiv \l(x + \l(m + 1\r)\r) + 1 \equiv \l(\l(x + 1\r) + m \r) + 1 \equiv \l(x + 1\r) + \l(m + 1\r)$$
+
+        \item $x + y \equiv y + x$
+        $$x + \l(m + 1\r) \equiv \l(x + m\r) + 1 \equiv \l(m + x\r) + 1 \equiv m + \l(x + 1\r) \equiv \l(m + 1\r) + x$$
+
+        \item $\l(x + y\r) + z \equiv x + \l(y + z\r)$
+        $$\l(x + y\r) + \l(m + 1\r) \equiv \l(\l(x + y\r) + m\r) + 1 \equiv \l(x + \l(y + m\r)\r) + 1 \equiv x + \l(\l(y + m\r) + 1\r) \equiv x + \l(y + \l(m + 1\r)\r)$$
+
+        \item $0 \cdot x \equiv 0$
+        $$0 \cdot \l(m + 1\r) \equiv 0 \cdot m + 0 \equiv 0 + 0 \equiv 0$$
+
+        \item $\l(x + 1\r) \cdot y \equiv x \cdot y + y$
+        $$\l(x + 1\r) \cdot \l(m + 1\r) \equiv \l(x + 1\r) \cdot m + \l(x + 1\r) \equiv \l(x \cdot m + m\r) + \l(x + 1\r) \equiv \dots \equiv \l(x \cdot m + x\r) \equiv \l(m + 1\r) \equiv x \cdot \l(m + 1\r) + \l(m + 1\r)$$
+
+        \item $x \cdot y \equiv y \cdot x$
+        $$x \cdot \l(m + 1\r) \equiv x \cdot m + x \equiv m \cdot x + x \equiv \l(m + 1\r) \cdot x$$
+
+        \item $\l(x + y\r) \cdot z \equiv x \cdot z + y \cdot z$
+        $$\l(x + y\r) \cdot \l(m + 1\r) \equiv \l(x + y\r) \cdot m + \l(x + y\r) = \l(x \cdot m + y \cdot m\r) + \l(x + y\r) \equiv \dots \equiv \l(x \cdot m + x\r) + \l(y \cdot m + y\r) \equiv x \cdot \l(m + 1\r) + y \cdot \l(m + 1\r)$$
+
+        \item $x \cdot \l(y + z\r) \equiv x \cdot y + x \cdot z$
+        $$x \cdot \l(y + \l(m + 1\r)\r) \equiv x \cdot \l(\l(y + m\r) + 1\r) \equiv x \cdot \l(y + m\r) + x \equiv \l(x \cdot y + x \cdot m\r) + x \equiv x \cdot y + \l(x \cdot m + x\r) \equiv x \cdot y + x \cdot \l(m + 1\r)$$
+
+        \item $\l(x \cdot y\r) \cdot z \equiv x \cdot \l(y \cdot z\r)$
+        $$\l(x \cdot y\r) \cdot \l(m + 1\r) \equiv \l(x \cdot y\r) \cdot m + x \cdot y \equiv x \cdot \l(y \cdot m\r) + x \cdot y \equiv x \cdot \l(y \cdot m + y\r) \equiv x \cdot \l(y \cdot \l(m + 1\r)\r)$$
+    \end{enumerate}
+\end{document}

@@ -1,0 +1,293 @@
+\documentclass{article}
+
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+\geometry{a4paper, scale=0.9}
+
+\xeCJKsetup{CJKmath=true, CheckSingle=true}
+\setCJKmainfont{微软雅黑}
+%\setmonofont{Ubuntu Mono}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\img}{\operatorname{img}}
+\renewcommand{\char}{\operatorname{Char}}
+
+\begin{document}
+    \section{Group 1}
+    \begin{description}
+        \item[Def 10.1] 群: 封闭, 结合律, 单位元, 逆元
+        \item[Def 10.2] 交换群/阿贝尔群
+        \item[Lemma 10.4] 单位元唯一\hfill$1' = 1'1 = 1$
+        \item[Lemma 10.5] 逆元唯一\hfill$b = 1b = (b'a)b = b'(ab) = b'1 = b'$
+        \item[THM 10.6] 群的等价定义: 封闭, 结合律, 左单位元, 左逆元\\
+            | \hfill$xx' = exx' = x''x'xx' = x''ex' = x''x' = e$\quad$xe = xx'x = ex = x$
+        \item[THM 10.7] 群的等价定义: 封闭, 结合律, $ax=y$和$ya=b$有解
+        \item[THM 10.8] \textbf{有限}群的等价定义: 封闭, 结合律, 左消去律, 右消去律\hfill 10.7\quad$x \mapsto ax$是双射
+        \item[Lemma 10.9] $(ab)^{-1} = b^{-1}a^{-1}$\hfill$(ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = bb^{-1} = 1$
+        \item[Lemma 10.10] $a^{m+n} = a^ma^n$; $a^{mn}=(a^m)^n$
+        \item[Def 10.11] 子群: \textbf{非空}, 封闭, 单位元, 逆元; $ab^{-1}$; 非平凡子群: $H \ne G$; $H \preceq G$, $H \prec G$\hfill$aa^{-1}$\quad$eb^{-1}$\quad$a(b^{-1})^{-1}$
+        \item[Ext 10.11] 子群的等价定义: $HH \subseteq H$, $H^{-1} \subseteq H$
+        \item[Lemma 10.12] $H, K \preceq G \implies H \cap K \preceq G$
+        \item[Def 10.13] 同构: 双射, $f(ab)=f(a)f(b)$
+        \item[Fact 10.14] $f(e) = e$, $f(a^{-1}) = f(a)^{-1}$
+        \item[Def 10.15] 生成的子群: $\langle A \rangle = \bigcup H_i$; 生成元集
+        \item[Ext 10.15] $\langle A \rangle = \l\{ x_1 \dots x_n \mid n \in \mathbb N, x_i \in A \cup A^{-1} \r\}$;
+            $\langle a \rangle = \l\{ a^r \mid r \in \mathbb Z \r\}$;
+            $ab = ba \implies \langle a, b \rangle = \l\{ a^m b^n \mid m, n \in \mathbb Z \r\}$
+        \item[Lemma 10.16] $a \in G \implies \l\{ a^n \mid n \in \mathbb Z \r\} \preceq G$
+        \item[Def 10.17] 循环群: $G = \langle a \rangle$
+        \item[Ext 10.17] 循环群只有两种形状: 无限$\l\{ \dots, a^{-n}, \dots, a^{-1}, 1, a, \dots, a^m, \dots \r\}$; 有限$\l\{ 1, a, \dots, a^{n-1} \r\}$
+        \item[Ext 10.17] 最小的非循环群$K_4$:
+            \begin{tabular}{c|cccc}
+                $\cdot$ & $1$ & $a$ & $b$ & $c$\\
+                \hline
+                $1$ & $1$ & $a$ & $b$ & $c$\\
+                $a$ & $a$ & $1$ & $c$ & $b$\\
+                $b$ & $b$ & $c$ & $1$ & $a$\\
+                $c$ & $c$ & $b$ & $a$ & $1$
+            \end{tabular}
+        \item[Def 10.18] 元素的阶: 最小正整数$n$, $a^n = 1$
+        \item[Def 10.19] 群的阶: 元素个数$|G|$
+        \item[Lemma 10.20] -\\$\ord g = t, g^m = 1 \implies t \mid m$\\
+            $\ord g = t \implies \ord g^s = t / \gcd(t, s), \ord g^s = \ord g^{\gcd(t, s)}$\\
+            $\ord g = t, \gcd(t, s) = 1 \implies \ord g^s = t$\\
+            $\ord g = \ord g^{-1}$
+        \item[THM 10.21] 循环群的子群也是循环群
+        \item[THM 10.22] -\\若$\l| G \r| = \infty$, 则$G$的生成元只有$a$和$a^{-1}$, $G$的所有子群$\l\{ \langle a^d \rangle \mid d = 0, 1, 2, \dots \r\}$\\
+            若$\l|G\r| = n$, 则有$\phi(n)$个生成元$a^r, \gcd(n, r) = 1$, $G$的所有子群$\l\{ \langle a^d \rangle \mid 0 \le d \le n - 1, d \mid n \r\}$
+        \item[Def 11.4] -\\对称群: \textbf{非空}集合$M$上所有可逆变换的全体$T(M)$, 乘法为变换的合成\\
+            变换群: 对称群的子群
+        \item[THM 11.10] $Aut(\mathbb F)$表示数域$\mathbb F$所有自同构的全体, 则$Aut(\mathbb F)$与变换的合成构成群, 称为自同构群
+        \item[Def 11.14] $\mathbb F \subseteq \mathbb E$, $\mathbb E$在$\mathbb F$上的对称群: $Aut(\mathbb E : \mathbb F) = \l\{ \phi \in Aut(\mathbb E) \mid \forall x \in \mathbb F, \phi(x) = x \r\}$
+        \item[Def 11.16] 数域$\mathbb F$上的$n$元多项式
+        \item[Def 11.17] $\l|M\r| = n$, $n$元对称群$S_n$: 集合$M$上的变换群
+        \item[Def 11.18] $\mathbb F[x]$的$n$元置换群
+        \item[Def 11.19] 多项式$f(x_1, x_2, \dots, x_n)$的对称群: $S_f = \l\{ \phi_\sigma \in T_n \mid \phi_\sigma(f) = f \r\}$
+        \item[Def 11.21] 对称多项式: $S_f = T_n$
+        \item[THM 11.22] \textbf{Cayley定理: 任何群都同构于一个变换群}\hfill$T: G \to \l\{ T_g : x \to gx \mid g \in G \r\}$
+        \item[Def 12.1] 排列: \textbf{有限}集$S$上的双射
+        \item[Fact 12.4] $\l| S_n \r| = n!$
+        \item[Fact 12.5] 轮换: $(x, \pi(x), \pi(\pi(x)), \dots)$; 偶轮换; 对换
+        \item[Fact 12.7] 轮换的组合; 不相交循环
+        \item[Fact 12.8] 不相交的轮换满足交换律
+        \item[THM 12.9] 任何置换可以唯一表示为不相交轮换的组合\hfill 对元素个数$n$归纳
+        \item[Fact 12.10] $\sigma = \sigma_1\sigma_2\dots\sigma_t$是轮换分解, 则$\ord(\sigma) = \lcm(\ord(\sigma_1), \dots, \ord(\sigma_t))$
+        \item[Fact 12.11] $a, \dots, b, c, \dots, d, k, l$互不相同, 则\\$(k~l)(k~a~\dots~b)(l~c~\dots~d) = (k~a~\dots~b~l~c~\dots~d)$\\$(k~l)(k~a~\dots~b~l~c~\dots~d) = (k~a~\dots~b)(k~c~\dots~d)$
+        \item[Def 12.12] 偶置换: 轮换分解中有偶数个\textbf{偶}轮换; 奇置换
+        \item[THM 12.13] 轮换可以分解为对换的合成
+        \item[Fact 12.14] 偶置换可以被分解为偶数个对换; 奇置换可以被分解为奇数个对换
+        \item[THM 12.15] 奇置换分解的对换个数必为奇数; 偶置换分解的对换个数必为偶数
+        \item[Fact 12.16] 两个偶置换的合成为偶置换; 两个奇置换的合称为偶置换; 一奇一偶置换的合称为奇置换
+        \item[Def 12.17] 对称群$S_n$: 所有置换; 交错群$A_n$: 所有偶置换
+        \item[Fact 12.18] $\l|S_n\r| = n!$; $|A_n| = \dfrac{1}{2} n!, n > 1$
+    \end{description}
+
+    \section{Group 2}
+    \begin{description}
+        \item[Def 1.1] 左陪集: $gH = \l\{ gh : h \in H \r\}$; 右陪集
+        \item[Lemma 1.3] $H$是$G$的有限子群, 则$\l| gH \r| = \l| H \r|$
+        \item[Lemma 1.4] $g \in gH$; 若$b = ah, h \in H$, 则$aH = bH$; 若$aH \cap bH \ne \varnothing$, 则$aH = bH$
+        \item[Fact 1.5] 左陪集和右陪集一样多\hfill 双射$aH \to Ha^{-1}$
+        \item[Def 1.6] 指数$[G:H]$: 左陪集的个数
+        \item[THM 1.7] Lagrange定理: $\l|G\r| = \l|H\r|[G:H]$; 若$G$有限, 则$\l|H\r| \mid \l|G\r|$\hfill 有$[G:H]$个大小均为$\l|H\r|$不相交的陪集
+        \item[Cor 1.8] 若$a \in G$, 则$\l| \langle a \rangle \r| \mid \l|G\r|$; $a^{\l|G\r|} = 1$; 素数阶群都是循环群
+        \item[THM 1.9] Euler定理: $a, n$互素, $n \ge 2$, 则$a^{\phi(n)} \equiv 1 \pmod n$\hfill$\l|(\mathbb Z_n^\ast, \cdot)\r| = \phi(n)$
+        \item[Cor 1.10] Fermat小定理: $a$是素数, $p \nmid a$, 则$a^{p-1} \equiv 1 \pmod p$
+        \item[Eg 1.11] RSA\\
+            $p, q$是素数, $N = pq$, $\phi(N) = (p - 1)(q - 1)$, $\gcd(e, \phi(N)) = 1$, $d = e^{-1} \pmod{\phi(N)}$, $pk = (N, e)$, $sk = d$\\
+            明文$M \in \mathbb N$, 密文$C \equiv M^e \pmod N$, 解密$M \equiv C^d \pmod N$
+        \item[THM 1.12] $[G:K] = [G:H][H:K]$\hfill$f : \l\{(a, b) \mid a~\text{是$H$在$G$中的陪集首}, b~\text{是$K$在$H$中的陪集首}\r\} \to G/K$是双射
+        \item[THM 1.14] $HK \preceq G \iff HK = KH$, 且此时$HK$由$H \cup K$生成\\
+            |\hfill$HK = (HK)^{-1} = K^{-1}H^{-1} = KH$, $(HK)^{-1} = K^{-1}H^{-1} = KH = HK$, $(HK)(HK) = HKHK = HHKK = HK$
+        \item[Lemma 1.15] $(aH)(bH) = abH, \forall a, b \in G \iff cHc^{-1} = H, \forall c \in G$\\
+            |\hfill$cHc^{-1} \subseteq cHc^{-1}H = (cH)(c^{-1}H) = cc^{-1}H = H$, $(aH)(bH) = a(Hb)H = abHH = abH$
+        \item[Lemma 1.16] $H \trianglelefteq G$ (满足一个): $cHc^{-1} \subseteq H$; $cHc^{-1} = H$; $cH = Hc$; 所有左陪集都是右陪集; 所有右陪集都是左陪集
+        \item[Def 1.17] 商环
+        \item[Def 1.19] 环同构: f(ab) = f(a)f(b)
+        \item[Lemma 1.20] $f(1) = 1$; $f(a^{-1}) = f^{-1}(a)$
+        \item[Def 1.21] 核$\ker f = \l\{ a \in G \mid f(a) = 1 \r\}$
+        \item[Fact 1.22] $\ker f \trianglelefteq G$
+        \item[Def 1.24] 自然同态: $\pi : G \mapsto G/N, a \to aN$; $\ker \pi = N$
+        \item[Lemma 1.25] $f$是单同态当且仅当$\ker f = \l\{1\r\}$
+        \item[Lemma 1.27] -\\
+            若$M \preceq G$, 则$f(M) \preceq G'$; 若$M \trianglelefteq G$且$f$是满同态, 则$f(M) \trianglelefteq G'$\\
+            若$K \preceq G'$, 则$f^{-1}(K) \preceq G$; 若$K \trianglelefteq G'$, 则$f^{-1}(K) \trianglelefteq G$
+        \item[THM 1.28] \textbf{同态分解定理: $\ker f = K \supseteq N$, 则有唯一的同态$\overline{f} : G/N \mapsto G'$使得$\overline{f} \circ \pi = f$}\hfill$\overline{f} : aN \to f(a)$\\
+            $\overline{f}$是满同态当且仅当$f$是满同态; $\overline{f}$是单同态当且仅当$K = N$
+        \item[THM 1.29] \textbf{第一同构定理: $G/\ker f \cong \img f$}
+        \item[Lemma 1.30] $N \trianglelefteq G$, 则: $HN = NH \preceq G$; $N \trianglelefteq HN$; $H \cap N \trianglelefteq H$
+        \item[THM 1.31] \textbf{第二同构定理: $H \preceq G$, $N \trianglelefteq G$, 则$H/(H \cap N) \cong HN/N$}\hfill$f: H \to HN/N, h \mapsto hN$
+        \item[THM 1.32] \textbf{第三同构定理: $H, N \trianglelefteq G$, $N \subseteq H$, 则$G/H \cong (G/N)/(H/N)$}\hfill$f: G/N \to G/H, aN \mapsto aH$
+        \item[THM EXT] $N \trianglelefteq G$, 则$\psi: \l\{H \mid N \preceq H \preceq G\r\} \to \l\{H \mid H \preceq G/N\r\}, H \mapsto H/N$是同构\\
+            $H_1 \preceq H_2 \iff H_1/N \preceq H2/N$, 且$[H_2 : H_1] = [H_2/N : H_1/N]$\hfill$aH_1 \to (aN)(H_1/N)$\\
+            $H \trianglelefteq G \iff H/N \trianglelefteq G/N$\hfill$\ker (f: a \to (aN)(H/N)) = H$\\
+            $H_1 \trianglelefteq H_2 \iff H_1/N \trianglelefteq H_2/N$, 且$H_2/H_1 \cong (H_2/N)(H_1/N)$
+        \item[Lemma 2.1] $\l| \langle a \rangle \r| = n$, $m \mid n$, 则存在$H \preceq \langle a \rangle$使得$\l|H\r| = m$
+        \item[Lemma 2.2] $\l|G\r| = n$是有限交换群, $n=pm$, $p$是素数, 则$G$中有$p$阶元素\hfill 对$m$进行归纳
+        \item[THM 2.3] $\l|G\r| = n$是有限交换群, $m \mid n$, 则存在$H \preceq G$使得$\l| H \r| = m$\hfill 对$m$进行归纳
+        \item[Def 3.1] 群在集合上的作用: $x \to g \bullet x$是双射, $h \bullet (g \bullet x) = (hg) \bullet x$, $1 \bullet x = x$\\
+            定义了$G$到$S_X$的同态, $g \bullet x = \Phi(g)(x)$
+        \item[Def 3.2] 中心元: $ax = xa, \forall x \in G$; 群$G$的所有中心元构成$G$的子群
+        \item[Def 3.3] 轨道: $B(x) = \l\{gx \mid g \in G\r\}$
+        \item[Ext 3.3] $y \sim x \iff y = gx$, 则$\sim$是等价关系
+        \item[Def 3.4] 传递: $B(x) = X, \forall x \in X$
+        \item[Def 3.5] 稳定子: $G(x) = \l\{ g \in G \mid gx = x \r\}$
+        \item[Ext 3.5] $G(x) \preceq G$; $y = ax$, 则$G(y) = aG(x)a^{-1}$
+        \item[THM 3.11] \textbf{轨道-稳定子定理: $\l|B(x)\r| = [G:G(x)]$}\hfill$f: gx \mapsto gG(x)$
+        \item[THM 3.12] $\l|G\r| = \l|C\r| + \sum\limits_{C(x)}[G:C(x)]$
+        \item[THM 3.13] $\l|HK\r| = \dfrac{\l|H\r|\l|K\r|}{\l|H \cap K\r|}$
+        \item[THM 3.14] \textbf{Burnside引理: 轨道数量为$\dfrac{1}{\l|G\r|} \sum\limits_{g \in G} \l|\l\{x \in X \mid g \bullet x = x \r\}\r|$}\\
+            |\hfill$\sum\limits_{g \in G} \l|F(g)\r| = \sum\limits_{x \in X} \l|G(x)\r| = \sum\limits_{B(x)} \l|B(x)\r|\l|G(x)\r| = \sum\limits_{B(x)} \l|G\r|$
+        \item[Def 4.1] $p$-群: 所有元素的阶都是$p$的幂次; Sylow $p$-子群: $\l|P\r| = p^r, P \preceq G, \l|G\r| = p^rm, p \nmid m$
+        \item[Lemma 4.3] $n = p^rm$, 则$\dbinom{n}{p^r} \equiv m \pmod p$
+        \item[THM Sylow1] \textbf{Sylow第一定理: $G$至少有一个Sylow $p$-子群; 所有Sylow-$p$子群都被一个Sylow $p$-子群包含}\hfill$G$在$G$的所有子集的集合上的左乘作用
+        \item[Cor 4.4] $p \mid \l| G \r|$, 则$G$有$p$阶元素\hfill$\ord(g) = p^i, g^{p^{i-1}}$
+        \item[Cor 4.5] $G$是$p$群当且仅当$G$的阶是$p$的幂次
+        \item[THM Sylow2] \textbf{Sylow第二定理: 设$n_p$为Sylow $p$-子群的个数, 则$n_p \equiv 1 \pmod p$, $n_p \mid m$}\hfill$P$在所有Sylow $p$-子群的集合上的共轭作用
+        \item[THM Sylow3] \textbf{Sylow第三定理: 所有Sylow $p$-子群共轭}\hfill$p$-子群在$P$的左陪集上的左乘作用
+        \item[Def 4.6] 共轭元素类; 中心元$a$的等价类为$a$; 共轭关系是等价关系; 共轭子群类
+        \item[Def 4.7] 正规化子: $N(S) = \l\{ g\in G \mid gSg^{-1} = S\r\}$; $N(S) \preceq G$; 若$S \preceq G$, 则$S \trianglelefteq N(S)$
+        \item[Lemma 4.8] $G$是有限群, $\l|S\r|$是$G$的共轭元素类, 则存在$H \preceq G$使得$[G:H] = t$\hfill$xsx^{-1} = ysy^{-1} \iff xN(s) = yN(s)$
+        \item[THM 4.9] $\l|G\r| = n = p^rm$, 则存在$H \preceq G$使得$\l|H\r| = p^r$\hfill 对$n$进行归纳, 分$C=G$, $p\mid\l|C\r|$, $p\nmid\l|C\r|$讨论
+        \item[Def 5.1] 群的外直积: $\overline G = H \times K = \l\{ (h, k) \mid h \in H, k \in K \r\}$
+        \item[THM 5.3] $\overline G$有限当且仅当$H, K$都有限, 且$\l|\overline G\r| = \l|H\r|\l|K\r|$; $\overline G$是Abel群当且仅当$H, K$都为Abel群; $H \times K \cong K \times H$
+        \item[THM 5.4] $\ord((a, b)) = \lcm(\ord(a), \ord(b))$
+        \item[THM 5.5] $H, K$是循环群, $\l|H\r| = m, \l|K\r| = n$, 则$H \times K$是循环群当且仅当$\gcd(m, n) = 1$
+        \item[Def 5.6] $H, K \trianglelefteq G$, $G = HK$, $H \cap K = \l\{1\r\}$, 则记$G = H \otimes K$
+        \item[THM 5.7] 内直积的等价定义: 每个元素可唯一分解, $hk = kh$
+        \item[Lemma 5.9] $H \otimes K \cong H \times K$
+        \item[THM 5.12] $G = H_1 \dots H_n$且$H_i \trianglelefteq G$, 则以下条件等价: $G$中任意元素有唯一表示; $H_i \cap \prod\limits_{j \ne i} H_j = \l\{1\r\}$; $H_i \cap \prod\limits_{j = 1}^{i-1} H_j = \l\{1\r\}$
+        \item[Lemma 6.1] Abel群$G$, $g_1 \dots g_m = 1$, 阶$t_i$两两互素, 则$g_i = 1, \forall i$\hfill 对$m$归纳
+        \item[THM 6.2] 有限交换群$\l|G\r| = n = p_1^{m_1} \dots p_t^{m_t}$, 则$G = H_1 \otimes \dots \otimes H_t$, $H_i$是Sylow $p_i$-群; 上述分解方法唯一
+        \item[THM 6.3] 有限$p$-群$G$有$G = g_1^\mathbb Z \otimes \dots \otimes g_k^\mathbb Z$; 上述分解方法唯一
+        \item[THM 6.4] 有限交换群可以唯一分解为阶为素数的幂的循环群的直积
+    \end{description}
+
+    \section{Ring 1}
+    \begin{description}
+        \item[Def 1.1] 环: 加法交换群, 乘法结合律, 乘法对加法分配律; 有单位元的环; 交换环
+        \item[Def 1.3] 零因子; 单位; 没有零因子的环满足消去律
+        \item[Def 1.4] 整环: 乘法交换律, 有乘法单位元, 无零因子
+        \item[Def 1.5] 除环: 所有非零元有逆元
+        \item[Def 1.6] 域: 交换除环
+        \item[Fact 1.7] 有限整环都是域
+        \item[Def 1.8] 特征: 最小$n$使得$n1 = 0$, 如果$n1$不可能为$0$, 则记特征为$0$; 整环的特征是$0$或素数
+        \item[Lemma 1.10] 环的广义分配律: $\sum\limits_{i = 1}^m a_i \sum\limits_{j = 1}^n b_j = \sum\limits_{i = 1}^n \sum\limits_{j = 1}^n a_ib_j$
+        \item[Lemma 1.11] 交换环上的二项式定理: $(a + b)^n = \sum\limits_{k = 0}^n \dbinom{n}{k} a^k b^{n - k}$
+        \item[Def 1.12] 子环
+        \item[THM 1.13] 子环的交是子环
+        \item[Def 1.14] 集合生成的子环; 子环的生成元集
+        \item[THM 1.15] $\langle S \rangle = \bigcap\limits_{S \subseteq A \preceq R} A$
+        \item[Def 2.1] 环同构: $f(a + b) = f(a) + f(b)$, $f(ab) = f(a)f(b)$, $f(1) = 1$
+        \item[Def 2.3] 环同态的核$\ker f = \l\{ r \in R \mid f(r) = 0 \r\}$
+        \item[Def 2.4] 理想: $I$是$R$的加法子群, $rI \subseteq I, \forall r \in R$, $Ir \subseteq I, \forall r \in R$; 左理想; 右理想; 非平凡理想
+        \item[Fact 2.5] $\ker f$是理想
+        \item[Def 2.6] 商环: $R/I = \l\{r + I \mid r \in R \r\}$
+        \item[Lemma 2.7] 每个非平凡理想都是环同态的核\hfill$\pi : R \mapsto R/I, r \to r + I$
+        \item[Lemma 2.8] 若$R$的理想都是平凡的, 则$f : R\mapsto S$是单环同态
+        \item[Def 2.9] 集合生成的理想; 主理想: 一个元素生成的理想\\
+            $(X) = \l\{ \sum\limits_{x \in X} x + \sum\limits_{x \in X} xr_i + \sum\limits_{x \in X} r_jx + \sum\limits_{x \in X} r_uxr_v \r\}$;
+            有$1$环: $(X) = \l\{ \sum\limits_{x \in X} r_uxr_v\r\}$;
+            有$1$交换环: $(X) = \l\{ \sum\limits_{r \in R, x \in X} rx \r\}$
+        \item[Fact 2.10] 有$1$交换环中, $\langle a \rangle = \l\{ ra \mid r \in R\r\} = Ra = aR$
+        \item[Def 2.11] $I+J$也是理想; $I \cap J$也是理想
+        \item[THM 3.1] \textbf{环同态分解定理: $\ker f \supseteq I$, 则有唯一的同态$\overline f : R/I \mapsto S$使得$\overline f \circ \pi = f$}\\
+            $\overline f$是满同态当且仅当$f$是满同态; $\overline f$是单同态当且仅当$\ker f = I$
+        \item[THM 3.2] \textbf{第一环同构定理: $R/\ker f \cong \img f$}
+        \item[THM 3.3] $S+I \prec R$; $I$是$S+I$的理想; $S\cap I$是$S$的理想; \textbf{第二环同构定理: $(S+I)/I \cong S/(S \cap I)$}
+        \item[THM 3.4] \textbf{第三环同构定理: $I, J$是$R$的理想, $J \subseteq I$, 则$R/J \cong (R/I)/(J/I)$}
+        \item[THM 3.5] \textbf{环的一一对应定理: $I$是$R$的理想, 则$\psi : \l\{ S \mid I \preceq S \preceq R\r\} \to \l\{ S \mid S \preceq R/I \r\}$是同构}
+        \item[Def EXT] 环的外直积
+        \item[THM CRT] 中国剩余定理: $I_1, \dots, I_n$是$R$的理想, $I_i + I_j = R, \forall i \ne j$, 则\\
+            如果$a_1 = 1, a_j = 0, \forall j \ne 1$, 则存在$a \in R$, $a \equiv a_i \pmod {I_i}, \forall i$\\
+            $\forall a_1, \dots, a_n \in R$, 存在$a \in R$, $a \equiv a_i \pmod {I_i}, \forall i$\\
+            $b \equiv a_i \pmod {I_i}, \forall i \iff b \equiv a \pmod{I_1 \cap \dots \cap I_n}$\\
+            $R / \bigcap I_i \cong R/I_1 \times \dots \times R/I_n$
+    \end{description}
+
+    \section{Ring 2}
+    \begin{description}
+        \item[Def 1.1] 极大理想: 不被其他真理想包含的真理想
+        \item[THM 1.2] 所有真理想都被一个极大x真理想包含; 所有环都有至少$1$个极大理想
+        \item[THM 1.3] $M$是交换环$R$的理想, 则$M$是极大理想当且仅当$R/M$是域
+        \item[Def 1.4] 素理想: 交换环的非平凡理想满足$ab \in P \Rightarrow a \in P~\mathrm{or}~b \in P, \forall a, b \in R$
+        \item[THM 1.5] $P$是交换环$R$的理想, 则$P$是素理想当且仅当$R/P$是整环
+        \item[Cor 1.6] $f: R\mapsto S$是交换环满同态, 则: 若$S$是域, 则$\ker f$是极大理想; 若$S$是整环, 则$\ker f$是素理想
+        \item[Cor 1.7] 交换环的极大理想都是素理想
+        \item[Def 2.1] 多项式环; $R$是交换环, 则$R[x]$是交换环; $R$是有$1$环, 则$R[x]$是有$1$环; $R$是整环, 则$R[x]$是整环
+        \item[EXT] $f, g \in R[x]$, $g$首一, 则$\exists!q, r \in R[x]$使得$f = qg+r$且$\deg r < \deg g$; 若$R$是域, 则$g$可以为非零多项式
+        \item[THM 2.2] 余式定理: $f(X) = q(X)(X-a) + f(a)$, 且$f(a) = 0 \iff X-a \mid f(X)$
+        \item[THM 2.3] $R$是整环, 则非零$n$次多项式$f \in R[x]$最多有$n$个根\hfill 对$n$归纳
+        \item[Def 3.1] 单位; 相伴; 不可约元; 素元; $p \ne 0$时素元当且仅当$(p)$是素理想; $(0)$是任何整环的素理想
+        \item[Lemma 3.2] 素元都不可约
+        \item[Def 3.3] 最大公因数: $d \mid a, \forall A$, $\forall e, e \mid a, \forall A, e \mid d$
+        \item[Fact 3.4] 最大公因数在相伴意义下唯一
+        \item[Def 3.5] 互素: $1$是最大公因数
+        \item[Def 3.6] 最小公倍数
+        \item[EXT] $a \mid b \iff (b) \preceq (a)$
+        \item[Def 3.7] 唯一分解整环: $\forall 0 \ne a \in R$, $a = up_1\dots p_n$, $u$是单位, $p_i$不可约, $n \in \mathbb N$, 且在无序和相伴意义下唯一
+        \item[THM 3.8] 唯一分解整环中, 不可约元与素元等价
+        \item[THM EXT] (1) 真因子链有限; (2) 非零非单位元可以被分解为有限个不可约元之积; (3) 不可约元都是素元;\\
+            (1)(2) $\iff$ UFD $\iff$ (2)(3)
+        \item[Def 3.10] 主理想整环: 任意理想都是主理想
+        \item[Def 3.11] 主理想整环都是唯一分解整环
+        \item[THM 3.12] 主理想整环$\iff$唯一分解整环, 且所有非零素理想都是极大理想\\
+            |\hfill 对环中元素分解所得不可约元个数的最小值归纳
+        \item[THM 4.1] $A$是主理想整环的非空子集, 则$d = gcd(A) \iff (d) = (A)$
+        \item[Cor 4.2] $A$是主理想整环的非空集合, 则$gcd(A)$可被$\sigma r_ia_i$表出
+        \item[Def 4.3] 欧几里得整环: 存在$\Psi : R\setminus\l\{0\r\} \mapsto \mathbb Z^\ast$, 使得$\forall a, b \in R$, $a = bq + r$, 其中$r = 0$或$\Psi(r) < \Psi(b)$
+        \item[THM 4.4] 欧几里得整环都是主理想整环\hfill 考虑理想中$\Psi(a)$最小的$a$
+        \item[Def 5.1] $S \subseteq R$, $S$是可乘的: $0 \notin S, 1\in S, ab \in S, \forall a, b \in S$
+        \item[Def 5.2] 定义$\dfrac{a}{b}$为$(a, b)$的等价关系$\exists s \in S, s(ad-bc)=0$的等价类; 这样的等价类的集合为分数环
+        \item[THM 5.3] 若$R$是整环, 则$S^{-1}R$也是; 若$R$是整环且$S=R\setminus\l\{0\r\}$, 则$S^{-1}$是域
+        \item[Fact 5.4] 整环的商域是包含它的最小域
+        \item[Def 6.1] 不可约多项式
+    \end{description}
+
+    \section{Field}
+    \begin{description}
+        \item[THM 2.1] 若$R$有单位元$e$, 则$\phi: \mathbb Z \mapsto R, m \to me$是环同态\\
+            若$\char R = 0$, 则$R$包含与$\mathbb Z$同构的子环; 若$\char R = n$, 则$R$包含与$\mathbb Z_n$同构的子环
+        \item[Lemma 2.2] 域同态都是单同态
+        \item[Def 2.3] 若$\mathbb F$没有真子域, 则$\mathbb F$是素域
+        \item[THM 2.4] 若$\char \mathbb F = 0$, 则$\mathbb F$包含与$\mathbb Q$的素子域; 若$\char \mathbb F = p$是素数, 则$\mathbb F$包含一个与$\mathbb Z_p$同构的素子域
+        \item[EXT] $\mathbb F[x]$是欧几里得整环
+        \item[Def 3.1] 域的扩张$\mathbb F \le \mathbb E$: $\mathbb F \subseteq \mathbb E$
+        \item[Fact 3.2] $\mathbb F \le \mathbb E$, 则$\mathbb E$是$\mathbb F$的向量空间, 其维数称为扩张的次数, 即为$[\mathbb E:\mathbb F]$
+        \item[THM 3.4] \textbf{$f(x) \in \mathbb F[x]$, $\deg(f) \ge 1$, 则存在扩张$\mathbb R/\mathbb F$和$\alpha \in \mathbb E$使得$f(\alpha) = 0$}
+        \item[THM 3.5] $f, g \in \mathbb F[x]$, $f, g$互素当且仅当任何扩域内$f, g$没有公共根
+        \item[Cor 3.6] $f, g$是$\mathbb F$上的不同不可约首一多项式, 则在任何扩域内$f, g$没有公共根
+        \item[Def 4.2] $\mathbb F \le \mathbb E$, $a \in \mathbb E$称为$\mathbb F$上的代数元: 存在非常值多项式$f \in \mathbb F[x]$使得$f(\alpha) = 0$\\
+            不是代数元的称为超越元; 所有元素都是代数元的扩张称为代数扩张
+        \item[Def 5.0] $\alpha \in \mathbb E$是$\mathbb F$上的代数元, 设$I = \l\{g \in \mathbb F[x] \mid g(\alpha) = 0 \r\}$,
+            则$I$是$\mathbb F[X]$的理想, 因此也是主理想, 即$I$是某个首一多项式$m(X) \in \mathbb F[X]$的所有倍数,
+            $m(X)$唯一, 称为$\alpha$在$\mathbb F$上的极小多项式, 写作$\min(\alpha, \mathbb F)$\\
+            $g \in \mathbb F[X]$, 则$g(\alpha) = 0 \iff m(X) \mid g(X)$\\
+            $m(X)$是满足$g(\alpha) = 0$的多项式中次数最低的那一个\\
+            $m(X)$是满足$g(\alpha) = 0$的唯一的首一不可约多项式
+        \item[Def 5.1] $\alpha \in \mathbb E$是$\mathbb F$上的代数元, 其最小多项式$m(X)$的次数为$n$, 则$\mathbb F(\alpha) = \mathbb F[\alpha]$\\
+            $\mathbb F[\alpha]$的一组基是$1, a, \dots, a^{n-1}$, 且$[\mathbb F(\alpha) : \mathbb F] = n$
+        \item[Lemma 5.2] $\mathbb F \le K \le \mathbb E$, $\alpha_i$构成$\mathbb E$对于$K$的一组基, $\beta_j$构成$K$对于$\mathbb F$的一组基, 则$\alpha_i\beta_j$构成$\mathbb E$对于$\mathbb F$的一组基
+        \item[Cor 5.3] $\mathbb F \le K \le \mathbb E$, 则$[\mathbb E : \mathbb F] = [\mathbb E : K][K : \mathbb F]$
+        \item[THM 5.4] $\mathbb E/\mathbb F$是有限扩张, 则$\mathbb E/\mathbb F$是代数扩张
+        \item[THM 6.1] $\mathbb F \le K$, $S_1 \subset K, S_2 \subset K$, 则$\mathbb F(S_1 \cup S_2) = \mathbb F(S_1)(S_2)$
+        \item[Def 6.2] $\mathbb F \le \mathbb E$, $f \in \mathbb F[X]$, $f$在$\mathbb E$上分裂: $f = \lambda(X-\alpha_1) \dots (X-\alpha_k), \alpha_i \in \mathbb E, \lambda \in \mathbb F$\\
+            $\mathbb F \le K$, $f \in \mathbb F[X]$, $K$是$f$关于$\mathbb F$的分裂域: $f$在$K$上分裂, 不在$K$包含$\mathbb F$的真子域上分裂
+        \item[THM 6.3] $f \in \mathbb F[X]$, $\deg f = n$, 存在$f$的分裂域$K$使得$[K:\mathbb F] \le n!$
+        \item[THM 6.4] $f(x) = b(x - \alpha_1)\dots(x - \alpha_n) \ne 0$在$\mathbb E$上分裂当且仅当$\mathbb E = \mathbb F(\alpha_1, \dots, \alpha_m)$
+        \item[THM 6.5] $\alpha, \beta$是不可约多项式$f \in \mathbb F[X]$在扩域$E$上的根, 则$\mathbb F(\alpha) \cong \mathbb F(\beta)$且其中$\alpha$映射为$\beta$且在$\mathbb F$范围内为自身映射
+        \item[Lemma 6.6] $p(x) \in \mathbb F[x]$不可约, $\alpha$是其在扩域$\mathbb E$上的根, 设$\phi: \mathbb F \mapsto \mathbb F'$是域同构, $\alpha'$是$\phi(p(x))$在扩域$E'$上的根, 则存在同构映射$\mathbb F(\alpha) \mapsto \mathbb F'(\alpha')$, 在$\mathbb F$的范围内即为$\phi$
+        \item[Def 6.7] $\mathbb F \le \mathbb E, \mathbb F \le \mathbb E'$, $i$是$\mathbb E$到$\mathbb E'$的自同构, 如果$i(a) = a$, 则称$i$为$\mathbb F$-同构
+        \item[THM 6.8] 扩域同构定理: $\mathbb F \cong \mathbb F'$, 同构映射$i$将$f \in \mathbb F[X]$映射到$f' \in \mathbb F'[X]$, $K$是$f$的分裂域, $K'$是$f'$的分裂域, 则$i$可以被扩展为$K$到$K'$的同构
+        \item[EXT] $f(x)$的分裂域在$\mathbb F$-同构意义下唯一
+        \item[Def 6.10] Pythagoras 扩域: $\mathbb F \subseteq K \le \mathbb R$, $K = \mathbb F(\sqrt{b_1})\dots(\sqrt{b_m}), b_i > 0, b_1 \in \mathbb F, b_i \in \mathbb F(\sqrt{b_1})\dots(\sqrt{b_{i-1}})$\\
+        \item[THM 6.11] 已知$1, a_1, \dots, a_n \in \mathbb R$, 尺规可以且仅可以作出$\mathbb Q(a_1, \dots, a_n)$的任意 Pythagoras 扩域中的数
+        \item[THM 6.12] $\mathbb E$是$\mathbb F$的 Pythagoras 扩域, 则$[\mathbb E:\mathbb F] = 2^n$
+    \end{description}
+\end{document}
